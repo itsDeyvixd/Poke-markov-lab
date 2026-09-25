@@ -103,7 +103,11 @@ function Dashboard() {
 
       <main className="w-full mb-8">
         {moveData && activeTab === 'absorbent' && (
-          <AbsorbentChain p_star={moveData.p_star} />
+          <AbsorbentChain 
+            p_miss={moveData.p_miss} 
+            p_norm={moveData.p_norm} 
+            p_crit={moveData.p_star}
+          />
         )}
         {moveData && activeTab === 'recurrent' && (
           <RecurrentChain 

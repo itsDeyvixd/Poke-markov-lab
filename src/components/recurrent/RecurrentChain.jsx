@@ -130,7 +130,7 @@ export default function RecurrentChain({ p_miss, p_norm, p_crit }) {
         <div className="pixel-box p-4">
           <h2 className="font-pixel text-sm mb-4">Chapman-Kolmogorov <InlineMath math={`P^{${n}}`} /></h2>
           <p className="font-sans text-xs text-gray-600 mb-4">
-            Predice exactamente dónde estaremos en el turno $n$. Notarás que si $n$ es muy grande, ¡todas las filas de la matriz se vuelven idénticas! Esto significa que el sistema "olvidó" cómo empezó.
+            Predice exactamente dónde estaremos en el turno <InlineMath math="n" />. Notarás que si <InlineMath math="n" /> es muy grande, ¡todas las filas de la matriz se vuelven idénticas! Esto significa que el sistema "olvidó" cómo empezó.
           </p>
           <div className="overflow-x-auto">
             <BlockMath math={`P^{${n}} = \\begin{bmatrix} ${Pn[0][0].toFixed(3)} & ${Pn[0][1].toFixed(3)} & ${Pn[0][2].toFixed(3)} \\\\ ${Pn[1][0].toFixed(3)} & ${Pn[1][1].toFixed(3)} & ${Pn[1][2].toFixed(3)} \\\\ ${Pn[2][0].toFixed(3)} & ${Pn[2][1].toFixed(3)} & ${Pn[2][2].toFixed(3)} \\end{bmatrix}`} />
@@ -140,16 +140,16 @@ export default function RecurrentChain({ p_miss, p_norm, p_crit }) {
         <div className="pixel-box p-4">
           <h2 className="font-pixel text-sm mb-4">Distribución Estacionaria <InlineMath math={`\\pi`} /></h2>
           <p className="font-sans text-xs text-gray-600 mb-4">
-            Cuando $n \to \infty$, el sistema alcanza el "equilibrio". El vector $\pi$ nos dice exactamente el porcentaje de tiempo que el Pokémon pasará en cada estado si la batalla dura por toda la eternidad.
+            Cuando <InlineMath math="n \to \infty" />, el sistema alcanza el "equilibrio". El vector <InlineMath math="\pi" /> nos dice exactamente el porcentaje de tiempo que el Pokémon pasará en cada estado si la batalla dura por toda la eternidad.
           </p>
           <div className="overflow-x-auto">
             <BlockMath math={`\\pi = \\begin{bmatrix} ${pi[0].toFixed(3)} & ${pi[1].toFixed(3)} & ${pi[2].toFixed(3)} \\end{bmatrix}`} />
           </div>
           <div className="mt-4 text-xs font-sans text-gray-700 leading-relaxed border-t border-gray-200 pt-4">
-            <p className="mb-2 font-bold">Tiempos Medios de Retorno ($\mu$):</p>
-            <p className="mb-1">Si fallas hoy, pasarán en promedio <strong><InlineMath math={`${mu[0].toFixed(2)}`} /> turnos</strong> antes de que vuelvas a fallar.</p>
-            <p className="mb-1">Si das un golpe normal, esperarás <strong><InlineMath math={`${mu[1].toFixed(2)}`} /> turnos</strong> en promedio para el siguiente.</p>
-            <p>Si das un crítico, tomará en promedio <strong><InlineMath math={`${mu[2].toFixed(2)}`} /> turnos</strong> para ver otro.</p>
+            <p className="mb-2 font-bold">Tiempos Medios de Retorno (<InlineMath math="\mu" />):</p>
+            <p className="mb-1">Si fallas hoy, pasarán en promedio <strong><InlineMath math={`${mu[0] === Infinity ? '\\infty' : mu[0].toFixed(2)}`} /> turnos</strong> antes de que vuelvas a fallar.</p>
+            <p className="mb-1">Si das un golpe normal, esperarás <strong><InlineMath math={`${mu[1] === Infinity ? '\\infty' : mu[1].toFixed(2)}`} /> turnos</strong> en promedio para el siguiente.</p>
+            <p>Si das un crítico, tomará en promedio <strong><InlineMath math={`${mu[2] === Infinity ? '\\infty' : mu[2].toFixed(2)}`} /> turnos</strong> para ver otro.</p>
           </div>
         </div>
       </div>
