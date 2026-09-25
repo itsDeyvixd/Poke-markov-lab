@@ -83,12 +83,12 @@ export default function AbsorbentChain({ p_star }) {
             <text x="200" y="90" textAnchor="middle" className="font-pixel text-[10px]" fill="var(--color-pdx-text)">{p.toFixed(3)}</text>
 
             {/* 0 -> 0 */}
-            <path d="M 85 75 A 25 25 0 1 1 70 85" fill="none" stroke="var(--color-pdx-text)" strokeWidth="3" markerEnd="url(#arrowhead)" />
-            <text x="50" y="45" textAnchor="middle" className="font-pixel text-[10px]" fill="var(--color-pdx-text)">{q.toFixed(3)}</text>
+            <path d="M 85 76 C 60 10, 140 10, 110 70" fill="none" stroke="var(--color-pdx-text)" strokeWidth="3" markerEnd="url(#arrowhead)" />
+            <text x="100" y="25" textAnchor="middle" className="font-pixel text-[10px]" fill="var(--color-pdx-text)">{q.toFixed(3)}</text>
 
             {/* 1 -> 1 */}
-            <path d="M 315 75 A 25 25 0 1 1 330 85" fill="none" stroke="var(--color-pdx-text)" strokeWidth="3" markerEnd="url(#arrowhead)" />
-            <text x="350" y="45" textAnchor="middle" className="font-pixel text-[10px]" fill="var(--color-pdx-text)">1.0</text>
+            <path d="M 285 76 C 260 10, 340 10, 310 70" fill="none" stroke="var(--color-pdx-text)" strokeWidth="3" markerEnd="url(#arrowhead)" />
+            <text x="300" y="25" textAnchor="middle" className="font-pixel text-[10px]" fill="var(--color-pdx-text)">1.0</text>
           </svg>
         </div>
       </div>
