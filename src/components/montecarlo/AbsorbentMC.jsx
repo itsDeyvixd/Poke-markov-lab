@@ -34,9 +34,12 @@ export default function AbsorbentMC({ P, targetN, theoreticalProb, theoreticalE 
 
   return (
     <div className="pixel-box p-4 mt-8 border-dashed">
-      <h3 className="font-pixel text-sm mb-4 text-[var(--color-pdx-border)]">
+      <h3 className="font-pixel text-sm mb-2 text-[var(--color-pdx-border)]">
         ▶ Verificación Empírica (Monte Carlo)
       </h3>
+      <p className="font-sans text-xs text-gray-700 mb-6 leading-relaxed bg-[#fff0f0] p-3 rounded border border-[#ffcccc]">
+        <strong>¿Qué estamos haciendo aquí?</strong> Todo lo que vimos arriba es matemática pura y exacta. Pero, ¿qué pasa en la vida real? El método <strong>Monte Carlo</strong> pone a tu computadora a jugar miles de batallas Pokémon simuladas usando azar. <br/>Al contar en cuántas batallas logramos el crítico y promediarlas, los números empíricos deberían coincidir casi perfectamente con nuestras fórmulas exactas.
+      </p>
       
       <div className="flex flex-col sm:flex-row gap-4 mb-4 items-end">
         <div>

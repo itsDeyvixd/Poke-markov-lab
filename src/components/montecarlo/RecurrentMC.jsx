@@ -39,9 +39,12 @@ export default function RecurrentMC({ P, piTheoretical }) {
 
   return (
     <div className="pixel-box p-4 mt-8 border-dashed">
-      <h3 className="font-pixel text-sm mb-4 text-[var(--color-pdx-border)]">
+      <h3 className="font-pixel text-sm mb-2 text-[var(--color-pdx-border)]">
         ▶ Simulación MCMC de Trayectoria
       </h3>
+      <p className="font-sans text-xs text-gray-700 mb-6 leading-relaxed bg-[#fff0f0] p-3 rounded border border-[#ffcccc]">
+        <strong>¿Qué estamos haciendo aquí?</strong> Usaremos <strong>MCMC (Markov Chain Monte Carlo)</strong>. Vamos a simular una sola batalla gigantesca paso a paso (ej. 50.000 turnos seguidos) tirando dados virtuales. <br/>Luego, contaremos cuántas veces ocurrió cada estado. Si la matemática no miente, gracias al <strong>Teorema Ergódico</strong>, las frecuencias observadas (f) serán casi idénticas a la Distribución Estacionaria Teórica ($\pi$).
+      </p>
       
       <div className="flex flex-col md:flex-row gap-6 mb-4">
         <div>
@@ -122,6 +125,9 @@ export default function RecurrentMC({ P, piTheoretical }) {
 
           <div className="bg-gray-100 p-3 rounded border border-gray-300">
             <h4 className="font-pixel text-[10px] mb-2">Distancia de Variación Total (TVD)</h4>
+            <p className="font-sans text-[10px] sm:text-xs text-gray-700 mb-2 leading-relaxed">
+              Es nuestra "regla de medir". Nos dice en un solo número qué tan diferente es nuestra simulación de la matemática perfecta. Entre más turnos simules, este número debe acercarse a cero.
+            </p>
             <div className="overflow-x-auto">
               <BlockMath math={`d_{TV}(f, \\pi) = \\frac{1}{2} \\sum_{i} |f_i - \\pi_i| = ${results.dTV.toFixed(5)}`} />
             </div>

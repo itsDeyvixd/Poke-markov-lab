@@ -79,6 +79,13 @@ function Dashboard() {
         )}
       </div>
 
+      <div className="pixel-box p-4 w-full mb-8 bg-[#fffbe6] border-[#d4b106]">
+        <h2 className="font-pixel text-sm mb-2 text-[#d4b106]">¿Qué es una Cadena de Markov?</h2>
+        <p className="font-sans text-sm text-gray-800 leading-relaxed">
+          Imagina un sistema que salta de un estado a otro paso a paso (como los turnos en un combate Pokémon). Una <strong>Cadena de Markov</strong> es un modelo matemático con una regla de oro: <em>"El futuro depende únicamente de dónde estás ahora, sin importar cómo llegaste hasta aquí"</em>. En este laboratorio, usamos la probabilidad de los ataques para predecir matemáticamente el futuro del combate.
+        </p>
+      </div>
+
       <div className="flex flex-col sm:flex-row w-full mb-6 gap-2">
         <button 
           onClick={() => setActiveTab('absorbent')}

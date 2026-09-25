@@ -50,6 +50,13 @@ export default function RecurrentChain({ p_miss, p_norm, p_crit }) {
 
   return (
     <div className="flex flex-col gap-4">
+      <div className="bg-[#e6f7ff] border-l-4 border-[var(--color-pdx-border-alt)] p-4 rounded mb-2">
+        <h3 className="font-pixel text-[10px] text-[var(--color-pdx-border-alt)] mb-2">Modelo de Cadena Recurrente</h3>
+        <p className="font-sans text-sm text-gray-700 leading-relaxed">
+          A diferencia del modelo absorbente, aquí la batalla nunca termina. El sistema salta infinitamente entre <strong>Fallo (F)</strong>, <strong>Normal (N)</strong> y <strong>Crítico (C)</strong>. Como puedes llegar a cualquier estado desde cualquier otro en el futuro, se llama cadena <em>recurrente irreducible</em>.
+        </p>
+      </div>
+
       <div className="flex gap-2">
         <button 
           onClick={() => setMode('A')} 
@@ -67,13 +74,18 @@ export default function RecurrentChain({ p_miss, p_norm, p_crit }) {
 
       <div className="pixel-box p-4">
         <h2 className="font-pixel text-sm mb-4">Matriz de Transición P</h2>
+        <p className="font-sans text-xs text-gray-600 mb-4">
+          La matriz 3x3 muestra todas las rutas. En <strong>Modo A</strong>, el ataque no tiene memoria: siempre tienes la misma probabilidad sin importar qué pasó antes. En <strong>Modo B</strong>, puedes editar las filas para simular que un ataque falla más si el anterior fue crítico.
+        </p>
         {mode === 'A' ? (
-          <BlockMath math={`P = \\begin{bmatrix} ${P[0][0].toFixed(3)} & ${P[0][1].toFixed(3)} & ${P[0][2].toFixed(3)} \\\\ ${P[1][0].toFixed(3)} & ${P[1][1].toFixed(3)} & ${P[1][2].toFixed(3)} \\\\ ${P[2][0].toFixed(3)} & ${P[2][1].toFixed(3)} & ${P[2][2].toFixed(3)} \\end{bmatrix}`} />
+          <div className="overflow-x-auto">
+            <BlockMath math={`P = \\begin{bmatrix} ${P[0][0].toFixed(3)} & ${P[0][1].toFixed(3)} & ${P[0][2].toFixed(3)} \\\\ ${P[1][0].toFixed(3)} & ${P[1][1].toFixed(3)} & ${P[1][2].toFixed(3)} \\\\ ${P[2][0].toFixed(3)} & ${P[2][1].toFixed(3)} & ${P[2][2].toFixed(3)} \\end{bmatrix}`} />
+          </div>
         ) : (
           <div className="flex flex-col gap-2">
             {[0, 1, 2].map(r => (
-              <div key={r} className="flex items-center gap-2">
-                <span className="font-pixel text-[10px]">Fila {r===0?'F':r===1?'N':'C'}:</span>
+              <div key={r} className="flex flex-wrap items-center gap-2">
+                <span className="font-pixel text-[10px] w-20">Fila {r===0?'F':r===1?'N':'C'}:</span>
                 {[0, 1, 2].map(c => (
                   <input
                     key={c}
@@ -104,7 +116,7 @@ export default function RecurrentChain({ p_miss, p_norm, p_crit }) {
           <input 
             type="range" min="1" max="50" value={n} 
             onChange={(e) => setN(parseInt(e.target.value))}
-            className="flex-1 accent-[var(--color-gba-dark)]"
+            className="flex-1 accent-[var(--color-pdx-border-alt)]"
           />
           <input 
             type="number" min="1" value={n} 
@@ -117,16 +129,27 @@ export default function RecurrentChain({ p_miss, p_norm, p_crit }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="pixel-box p-4">
           <h2 className="font-pixel text-sm mb-4">Chapman-Kolmogorov <InlineMath math={`P^{${n}}`} /></h2>
-          <BlockMath math={`P^{${n}} = \\begin{bmatrix} ${Pn[0][0].toFixed(3)} & ${Pn[0][1].toFixed(3)} & ${Pn[0][2].toFixed(3)} \\\\ ${Pn[1][0].toFixed(3)} & ${Pn[1][1].toFixed(3)} & ${Pn[1][2].toFixed(3)} \\\\ ${Pn[2][0].toFixed(3)} & ${Pn[2][1].toFixed(3)} & ${Pn[2][2].toFixed(3)} \\end{bmatrix}`} />
+          <p className="font-sans text-xs text-gray-600 mb-4">
+            Predice exactamente dónde estaremos en el turno $n$. Notarás que si $n$ es muy grande, ¡todas las filas de la matriz se vuelven idénticas! Esto significa que el sistema "olvidó" cómo empezó.
+          </p>
+          <div className="overflow-x-auto">
+            <BlockMath math={`P^{${n}} = \\begin{bmatrix} ${Pn[0][0].toFixed(3)} & ${Pn[0][1].toFixed(3)} & ${Pn[0][2].toFixed(3)} \\\\ ${Pn[1][0].toFixed(3)} & ${Pn[1][1].toFixed(3)} & ${Pn[1][2].toFixed(3)} \\\\ ${Pn[2][0].toFixed(3)} & ${Pn[2][1].toFixed(3)} & ${Pn[2][2].toFixed(3)} \\end{bmatrix}`} />
+          </div>
         </div>
 
         <div className="pixel-box p-4">
           <h2 className="font-pixel text-sm mb-4">Distribución Estacionaria <InlineMath math={`\\pi`} /></h2>
-          <BlockMath math={`\\pi = \\begin{bmatrix} ${pi[0].toFixed(3)} & ${pi[1].toFixed(3)} & ${pi[2].toFixed(3)} \\end{bmatrix}`} />
-          <div className="mt-4 text-xs font-pixel leading-relaxed">
-            <p className="mb-2"><InlineMath math={`\\mu_F = ${mu[0].toFixed(2)}`} /> turnos</p>
-            <p className="mb-2"><InlineMath math={`\\mu_N = ${mu[1].toFixed(2)}`} /> turnos</p>
-            <p><InlineMath math={`\\mu_C = ${mu[2].toFixed(2)}`} /> turnos</p>
+          <p className="font-sans text-xs text-gray-600 mb-4">
+            Cuando $n \to \infty$, el sistema alcanza el "equilibrio". El vector $\pi$ nos dice exactamente el porcentaje de tiempo que el Pokémon pasará en cada estado si la batalla dura por toda la eternidad.
+          </p>
+          <div className="overflow-x-auto">
+            <BlockMath math={`\\pi = \\begin{bmatrix} ${pi[0].toFixed(3)} & ${pi[1].toFixed(3)} & ${pi[2].toFixed(3)} \\end{bmatrix}`} />
+          </div>
+          <div className="mt-4 text-xs font-sans text-gray-700 leading-relaxed border-t border-gray-200 pt-4">
+            <p className="mb-2 font-bold">Tiempos Medios de Retorno ($\mu$):</p>
+            <p className="mb-1">Si fallas hoy, pasarán en promedio <strong><InlineMath math={`${mu[0].toFixed(2)}`} /> turnos</strong> antes de que vuelvas a fallar.</p>
+            <p className="mb-1">Si das un golpe normal, esperarás <strong><InlineMath math={`${mu[1].toFixed(2)}`} /> turnos</strong> en promedio para el siguiente.</p>
+            <p>Si das un crítico, tomará en promedio <strong><InlineMath math={`${mu[2].toFixed(2)}`} /> turnos</strong> para ver otro.</p>
           </div>
         </div>
       </div>
