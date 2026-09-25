@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BlockMath, InlineMath } from 'react-katex';
 import { matrixPower } from '../../utils/math';
+import AbsorbentMC from '../montecarlo/AbsorbentMC';
 
 export default function AbsorbentChain({ p_star }) {
   const [n, setN] = useState(1);
@@ -95,11 +96,18 @@ export default function AbsorbentChain({ p_star }) {
 
       <div className="pixel-box p-4">
         <h2 className="font-pixel text-sm mb-4">Demostración</h2>
-        <div className="text-sm">
+        <div className="text-sm overflow-x-auto">
           <BlockMath math={`P(T \\le n) = 1 - P(T > n) = 1 - (1-p^*)^n`} />
           <BlockMath math={`f_{01}(n) = P(\\text{Primer crítico en } n) = (1-p^*)^{n-1}p^*`} />
         </div>
       </div>
+
+      <AbsorbentMC 
+        P={P} 
+        targetN={n} 
+        theoreticalProb={probLeqN} 
+        theoreticalE={expectedTime} 
+      />
     </div>
   );
 }

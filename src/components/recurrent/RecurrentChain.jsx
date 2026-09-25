@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BlockMath, InlineMath } from 'react-katex';
 import { matrixPower, solveStationaryDistribution } from '../../utils/math';
+import RecurrentMC from '../montecarlo/RecurrentMC';
 
 export default function RecurrentChain({ p_miss, p_norm, p_crit }) {
   const [mode, setMode] = useState('A'); // A: Standard, B: Dynamic
@@ -174,6 +175,8 @@ export default function RecurrentChain({ p_miss, p_norm, p_crit }) {
           </svg>
         </div>
       </div>
+      
+      <RecurrentMC P={P} piTheoretical={pi} />
     </div>
   );
 }
