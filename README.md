@@ -1,7 +1,7 @@
 # 🐉 Pokémon Markov Lab 
 **Análisis Estocástico Exacto**
 
-Laboratorio web interactivo y riguroso para la asignatura de **Cadenas de Markov y Aplicaciones**, diseñado para analizar la probabilidad y el comportamiento a largo plazo de ataques Pokémon utilizando ecuaciones estocásticas formales, sin recurrir a simulaciones de Monte Carlo.
+Laboratorio web interactivo y riguroso para la asignatura de **Cadenas de Markov y Aplicaciones**, diseñado para analizar la probabilidad y el comportamiento a largo plazo de ataques Pokémon combinando el **Cálculo Analítico Exacto** con **Verificación Empírica Monte Carlo**.
 
 ---
 
@@ -15,11 +15,11 @@ El modelo matemático y los conceptos de tiempo discreto implementados se fundam
 
 ## 🚀 Funcionalidades Principales
 - **Conexión con PokéAPI**: Búsqueda en tiempo real de movimientos (precisión, ratios de golpe crítico).
-- **Cadenas Absorbentes (2 Estados)**: Cálculo de potencias de Chapman-Kolmogorov, probabilidades exactas de impacto y cálculo de tiempos de parada esperados ($\mathbb{E}[T_{01}]$).
-- **Cadenas Recurrentes (3 Estados)**: Matrices de transición 3x3 dinámicas, cálculo de distribuciones estacionarias ($\pi$) resolviendo sistemas algebraicos lineales estáticos transpuestos y obtención de tiempos medios de recurrencia ($\mu$).
-- **Cero Simulaciones (100% Analítico)**: Precisión matemática al calcular límites estacionarios teóricos (implementado con `mathjs`). No hay azar ni iteraciones de prueba.
+- **Cadenas Absorbentes (3 Estados)**: Cálculo de potencias de Chapman-Kolmogorov, condición de parada (Crítico o Fallo) y cálculo de tiempos de parada esperados ($\mathbb{E}[T]$).
+- **Cadenas Recurrentes (3 Estados)**: Matrices de transición 3x3 dinámicas, cálculo de distribuciones estacionarias ($\pi$) resolviendo sistemas algebraicos lineales y obtención de tiempos medios de recurrencia ($\mu$).
+- **Verificación Empírica (Monte Carlo)**: Módulos MCMC para generar trayectorias pseudoaleatorias, contrastando la Ley Débil de los Grandes Números (WLLN) y calculando la Distancia de Variación Total (TVD) para el Teorema Ergódico.
 - **Renderizado Matemático Premium**: Todas las fórmulas de Chapman-Kolmogorov, vectores límite y demostraciones son procesadas con tipografía $\LaTeX$ purista usando `KaTeX`.
-- **Diseño Retro Accesible**: Estética inmersiva *Pokédex FireRed* con navegación web moderna (React Router + Tailwind CSS), pixel-perfect y con estándares WCAG de alto contraste.
+- **Diseño Retro Accesible**: Estética inmersiva *Pokédex FireRed* con navegación web moderna, pixel-perfect y con estándares WCAG de alto contraste.
 
 ---
 
@@ -65,5 +65,5 @@ Para desplegarlo de forma eficiente usando GitHub Actions, solo ve a la configur
 ---
 
 <p align="center">
-  <small>Desarrollado para el análisis estocástico exacto. 2026.</small>
+  <small>Laboratorio de análisis estocástico exacto y verificación empírica Monte Carlo. 2026.</small>
 </p>

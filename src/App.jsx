@@ -157,7 +157,7 @@ export default function App() {
 
         <footer className="pixel-box p-4 w-full text-center mt-auto">
           <p className="font-pixel text-[8px] sm:text-[9px] leading-loose text-gray-700">
-            Desarrollado para el análisis estocástico exacto sin simulación Monte Carlo.<br/>
+            Laboratorio de análisis estocástico exacto y verificación empírica Monte Carlo.<br/>
             Deyvi Ardila Forero - 2026.
           </p>
         </footer>
